@@ -1,0 +1,21 @@
+server:
+  port: 7001
+
+spring:
+  data:
+    mongodb:
+      username: root
+      password: root
+      host: localhost
+      port: 27017
+      auto-index-creation: true
+      authentication-database: admin
+      database: product-db
+
+logging:
+  level:
+    root: info
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: TRACE
+---
+spring.config.activate.on-profile: docker
+server.port: 8080

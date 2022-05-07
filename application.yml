@@ -1,0 +1,30 @@
+app:
+  eureka-username: '{cipher}93f43c573b566cf98b2b77ae148f4ab88b7bed06c2eedec20626b60886316ea6'
+  eureka-password: '{cipher}3dd4a404e50631cb9cc7c91a43ce6e21ec231ce26085c5b42efc1a4cc2633082'
+  eureka-server: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
+management.health.defaults.enabled: false
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411/
+---
+spring.config.activate.on-profile: docker
+
+app:
+  eureka-server: eureka

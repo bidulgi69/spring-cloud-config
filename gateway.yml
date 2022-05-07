@@ -1,0 +1,28 @@
+server.port: 8443
+
+spring.cloud.gateway.globalcors.corsConfigurations:
+  '[/**]':
+    allowedOriginPatterns: "*"
+    allow-credentials: true
+    allowedHeaders:
+      - x-requested-with
+      - authorization
+      - content-type
+      - credential
+      - X-AUTH-TOKEN
+      - X-CSRF-TOKEN
+    allowedMethods:
+      - POST
+      - GET
+      - PUT
+      - OPTIONS
+      - DELETE
+      - PATCH
+      - HEAD
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
